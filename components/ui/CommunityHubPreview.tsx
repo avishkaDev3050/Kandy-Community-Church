@@ -69,7 +69,7 @@ export default function CommunityHubPreview() {
 
             <div className="pt-4">
               <Link
-                href="/community-hub"
+                href="/hub"
                 className="inline-flex items-center gap-2 bg-[#C59B27] hover:bg-[#b08820] text-white px-7 py-3.5 rounded-full text-sm font-medium shadow-lg transition-all group"
               >
                 Learn More About The Project
@@ -100,7 +100,7 @@ export default function CommunityHubPreview() {
 
             <div className="space-y-3">
               <Link
-                href="/support"
+                href="/hub#donate"
                 className="w-full inline-flex items-center justify-center bg-white text-[#1C2D42] hover:bg-gray-100 font-medium px-6 py-3.5 rounded-full text-sm transition-all shadow-md"
               >
                 Give & Support

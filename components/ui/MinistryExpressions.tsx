@@ -35,61 +35,102 @@ const pillars = [
 ];
 
 export default function MinistryExpressions() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.215, 0.61, 0.355, 1],
+      },
+    },
+  };
+
   return (
-    <section className="py-24 px-4 sm:px-6 bg-[#FAF9F6] relative overflow-hidden">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <section className="py-28 px-4 sm:px-6 bg-[#241C15] relative overflow-hidden text-[#F4EBE1]">
+      {/* Soft Ambient Background Glows */}
+      <motion.div 
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/3 left-10 w-96 h-96 bg-[#D4A359]/10 rounded-full blur-3xl pointer-events-none" 
+      />
+
+      <div className="max-w-6xl mx-auto space-y-16 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-[#C59B27] text-xs uppercase tracking-[0.25em] font-semibold px-3 py-1 rounded-full bg-[#C59B27]/10">
+          <span className="text-[#D4A359] text-xs uppercase tracking-[0.25em] font-semibold px-4 py-1.5 rounded-full bg-[#D4A359]/15 border border-[#D4A359]/30">
             Our Core Pillars
           </span>
-          <h2 className="text-3xl sm:text-4xl font-light text-[#1C2D42]">
+          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-wide">
             Ministry Expressions
           </h2>
-          <p className="text-[#718096] text-sm sm:text-base">
+          <p className="text-[#E2D4C7] text-sm sm:text-base font-light">
             How we live out our faith and calling in Kandy and beyond.
           </p>
         </div>
 
-        {/* 4 Pillars Grid with Ultra-Slower Bottom-to-Top Dark Blur Water Fill Effect */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillars.map((pillar, index) => {
+        {/* 4 Pillars Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-80px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+        >
+          {pillars.map((pillar) => {
             const IconComponent = pillar.icon;
             return (
               <motion.div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="group relative bg-white p-7 rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden transition-all duration-1000 flex flex-col justify-between"
+                variants={cardVariants}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative bg-[#34291F] backdrop-blur-md p-7 rounded-3xl border border-[#D4A359]/30 shadow-2xl overflow-hidden transition-all duration-500 flex flex-col justify-between"
               >
-                {/* Slow Liquid Water Fill Layer (Duration increased to 1200ms) */}
-                <div className="absolute inset-0 bg-[#1C2D42]/90 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-[1200ms] ease-[cubic-bezier(0.25,1,0.3,1)] z-0 pointer-events-none" />
+                {/* Liquid Gold Fill Layer */}
+                <div className="absolute inset-0 bg-[#D4A359] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] z-0 pointer-events-none" />
 
-                {/* Card Content with Slower Color & Scale Transitions */}
+                {/* Card Content */}
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-2xl bg-[#1C2D42] text-white flex items-center justify-center mb-6 group-hover:bg-[#C59B27] group-hover:scale-110 transition-all duration-[1000ms] shadow-md">
-                    <IconComponent size={24} />
+                  <div className="w-13 h-13 rounded-2xl bg-[#D4A359]/20 text-[#D4A359] group-hover:bg-[#1A120B] group-hover:text-[#D4A359] flex items-center justify-center mb-6 transition-colors duration-500 shadow-md">
+                    <IconComponent size={26} />
                   </div>
 
-                  <span className="text-[#C59B27] group-hover:text-[#F6AD55] text-xs font-semibold tracking-wider uppercase transition-colors duration-[1000ms]">
+                  <span className="text-[#D4A359] group-hover:text-[#1A120B] text-xs font-semibold tracking-wider uppercase transition-colors duration-500">
                     {pillar.tag}
                   </span>
 
-                  <h3 className="text-xl font-medium text-[#1C2D42] group-hover:text-white mt-1 mb-3 transition-colors duration-[1000ms]">
+                  <h3 className="text-xl font-light text-white group-hover:text-[#1A120B] mt-1 mb-3 transition-colors duration-500">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-sm text-[#718096] group-hover:text-gray-200 leading-relaxed font-light transition-colors duration-[1000ms]">
+                  <p className="text-sm text-[#E2D4C7] group-hover:text-[#1A120B] leading-relaxed font-normal transition-colors duration-500">
                     {pillar.description}
                   </p>
                 </div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>
