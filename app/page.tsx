@@ -7,15 +7,15 @@ import MissionVision from "@/components/ui/MissionVision";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#F3EFE0]">
       <Navbar />
       <main className="flex-1">
         <Hero />
         <MissionVision />
         <MinistryExpressions />
         <CommunityHubPreview />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }

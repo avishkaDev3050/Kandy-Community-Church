@@ -1,99 +1,152 @@
 "use client";
 
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, MapPin, Clock } from "lucide-react";
+
+const heroSlides = [
+  {
+    id: 1,
+    image: "/images/hero-1.jpg",
+    title: "Reach the Unreached",
+    subtitle: "Sharing the Gospel of Jesus Christ with love, compassion, and urgency.",
+  },
+  {
+    id: 2,
+    image: "/images/hero-2.jpg",
+    title: "Raise Disciples",
+    subtitle: "Building strong believers through the Word of God, prayer, and fellowship.",
+  },
+  {
+    id: 3,
+    image: "/images/hero-3.jpg",
+    title: "Release Leaders",
+    subtitle: "Equipping believers to transform communities and influence nations.",
+  },
+];
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 py-16 text-center overflow-hidden bg-[#241C15]">
-      
-      {/* 1. Mobile Background Image */}
-      <div className="block sm:hidden absolute inset-0 z-0">
-        <Image
-          src="/background-m.jpg"
-          alt="Kandy Community Church Mobile Hero"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* Soft Dark Overlay for Text Contrast */}
-        <div className="absolute inset-0 bg-[#241C15]/60 bg-gradient-to-b from-[#241C15]/80 via-transparent to-[#241C15]/90" />
-      </div>
-
-      {/* 2. Desktop Background Image */}
-      <div className="hidden sm:block absolute inset-0 z-0">
-        <Image
-          src="/background.jpg"
-          alt="Kandy Community Church Hero"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* Soft Dark Overlay for Text Contrast */}
-        <div className="absolute inset-0 bg-[#241C15]/50 bg-gradient-to-r from-[#241C15]/80 via-[#241C15]/40 to-[#241C15]/80" />
-      </div>
-
-      {/* Main Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-
-        {/* Tagline Badge */}
+    <section className="relative h-[85vh] min-h-[580px] w-full overflow-hidden bg-[#1C2D42]">
+      {/* Background Image Slider */}
+      <AnimatePresence mode="wait">
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 z-0"
         >
-          <span className="inline-block text-[#D4A359] text-xs sm:text-sm uppercase tracking-[0.25em] font-medium px-4 py-1.5 rounded-full bg-[#241C15]/70 backdrop-blur-md border border-[#C59B27]/30 shadow-lg">
-            Reach. Raise. Release.
-          </span>
+          <Image
+            src={heroSlides[currentSlide].image}
+            alt="Kandy Community Church"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C2D42] via-[#1C2D42]/75 to-[#1C2D42]/40" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Hero Content Layer */}
+      <div className="relative z-10 h-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center space-y-6 pt-10">
+        
+        {/* Church Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#1C2D42]/80 border-2 border-[#C59B27] p-2 flex items-center justify-center shadow-2xl backdrop-blur-md"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Kandy Community Church Logo"
+            width={90}
+            height={90}
+            className="object-contain"
+          />
         </motion.div>
 
-        {/* Main Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+        {/* Church Motto Badge */}
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-6 text-3xl sm:text-5xl md:text-6xl font-light text-[#F4EBE1] leading-[1.15] drop-shadow-lg"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="inline-block text-[#FFCC00] text-xs uppercase tracking-[0.3em] font-semibold px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-sm"
         >
-          Transforming Communities Through <br className="hidden sm:inline" />
-          <span className="italic font-serif font-normal text-[#D4A359]">
-            The Gospel of Christ
-          </span>
-        </motion.h1>
+          Reach · Raise · Release
+        </motion.span>
 
-        {/* Subtitle Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-6 text-[#D1C2B4] text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md font-light"
-        >
-          A Christ-centered community in Kandy dedicated to reaching the unreached, raising mature disciples, and restoring families.
-        </motion.p>
+        {/* Dynamic Text Content */}
+        <div className="max-w-3xl space-y-3 min-h-[130px] flex flex-col justify-center">
+          <motion.h1
+            key={`title-${currentSlide}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-6xl font-light text-white tracking-wide"
+          >
+            {heroSlides[currentSlide].title}
+          </motion.h1>
 
-        {/* Call To Action Buttons */}
+          <motion.p
+            key={`sub-${currentSlide}`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-gray-200 text-sm sm:text-lg font-light leading-relaxed max-w-2xl mx-auto"
+          >
+            {heroSlides[currentSlide].subtitle}
+          </motion.p>
+        </div>
+
+        {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-wrap items-center justify-center gap-4 pt-2"
         >
           <Link
-            href="/about"
-            className="w-full sm:w-auto bg-[#B8860B] hover:bg-[#A3750A] text-[#1A120B] px-8 py-3.5 rounded-full text-sm font-semibold shadow-xl transition-all text-center hover:scale-105 active:scale-95"
+            href="/hub"
+            className="bg-[#FFCC00] hover:bg-[#e6b800] text-[#1C2D42] px-7 py-3 rounded-xl font-semibold text-sm transition-all shadow-md flex items-center gap-2"
           >
-            Our Story & Vision
+            <span>Kingdom Community Hub</span>
+            <ArrowRight size={16} />
           </Link>
           <a
-            href="#sunday-service"
-            className="w-full sm:w-auto bg-[#241C15]/70 hover:bg-[#3D3024] text-[#F4EBE1] border border-[#C59B27]/40 backdrop-blur-md px-8 py-3.5 rounded-full text-sm font-medium transition-all shadow-lg text-center hover:scale-105 active:scale-95"
+            href="#service-times"
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-7 py-3 rounded-xl font-medium text-sm transition-all backdrop-blur-sm"
           >
-            Sunday Service Info
+            Sunday Worship
           </a>
         </motion.div>
 
+        {/* Slider Controls (Dots) */}
+        <div className="absolute bottom-6 flex items-center gap-2.5">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                currentSlide === index ? "w-8 bg-[#FFCC00]" : "w-2 bg-white/40 hover:bg-white/70"
+              }`}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

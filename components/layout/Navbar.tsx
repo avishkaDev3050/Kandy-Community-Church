@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Our Story", href: "/about" },
     { name: "Beliefs & Values", href: "/beliefs" },
-    { name: "What We Do", href: "/ministries" },
+    { name: "Our Values", href: "/values" },
     { name: "Community Hub", href: "/hub" },
   ];
 
