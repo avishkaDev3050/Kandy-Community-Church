@@ -1,3 +1,4 @@
+import HomeContactForm from "@/components/contact-form/HomeCantactForm";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import CommunityHubPreview from "@/components/ui/CommunityHubPreview";
@@ -14,6 +15,7 @@ export default function Home() {
         <MissionVision />
         <MinistryExpressions />
         <CommunityHubPreview />
+        <HomeContactForm />
       </main>
       <Footer />
     </div>
