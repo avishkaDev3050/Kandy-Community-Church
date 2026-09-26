@@ -85,7 +85,7 @@ export default function AboutPage() {
         >
           <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-[#1C2D42]/10 border border-[#D0C4A8]">
             <Image
-              src="/images/pastors.jpg"
+              src="/images/pastors.jpeg"
               alt="Ps. & Mrs. Dilini Wijesekara"
               fill
               className="object-cover"
