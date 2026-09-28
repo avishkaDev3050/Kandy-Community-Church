@@ -17,6 +17,7 @@ export default function Navbar() {
     { name: "Beliefs & Values", href: "/beliefs" },
     { name: "Our Values", href: "/values" },
     { name: "Community Hub", href: "/hub" },
+    { name: "Gallery", href: "/gallery" },
   ];
 
   return (
