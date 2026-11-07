@@ -17,49 +17,84 @@ const galleryCategories = [
   "Youth & Events",
 ];
 
-// Gallery Data with single image placeholder (/images/hero-1.jpg)
+// Gallery Data mapped with actual provided church photos (1.jpg to 12.jpg)
 const galleryItems = [
   {
     id: 1,
-    title: "Sunday Morning Worship",
+    title: "Sunday Morning Sanctuary Worship",
     category: "Worship Services",
-    image: "/images/hero-1.jpg",
-    description: "Gathering together in unity every Sunday at 12:00 PM.",
+    image: "/images/gallery/1.jpeg",
+    description: "Gathering together in unity for Sunday worship service at Kandy Community Church.",
   },
   {
     id: 2,
-    title: "Bethel Education Classes",
-    category: "Bethel Education",
-    image: "/images/hero-1.jpg",
-    description: "Empowering children through character building and education.",
+    title: "Altar Prayer & Intercession",
+    category: "Worship Services",
+    image: "/images/gallery/2.jpeg",
+    description: "Deep times of prayer and surrendering our hearts before the Lord.",
   },
   {
     id: 3,
-    title: "Kidney Patient Support & Care",
-    category: "Community Care",
-    image: "/images/hero-1.jpg",
-    description: "Extending love and practical support to dialysis patients and families.",
+    title: "Congregational Prayer Fellowship",
+    category: "Worship Services",
+    image: "/images/gallery/3.jpeg",
+    description: "Believers standing together in faith, interceding for families and the region.",
   },
   {
     id: 4,
-    title: "Praise & Intercession",
+    title: "Worship & Word Gathering",
     category: "Worship Services",
-    image: "/images/hero-1.jpg",
-    description: "Deep times of prayer and Spirit-filled worship.",
+    image: "/images/gallery/4.jpeg",
+    description: "Immersed in God's presence through heartfelt worship and scripture.",
   },
   {
     id: 5,
-    title: "Youth Fellowship Gathering",
-    category: "Youth & Events",
-    image: "/images/hero-1.jpg",
-    description: "Equipping the next generation of leaders in Kandy.",
+    title: "Laying on of Hands & Blessing",
+    category: "Worship Services",
+    image: "/images/gallery/5.jpeg",
+    description: "Pastoral leadership ministering healing, strength, and spiritual breakthrough.",
   },
   {
     id: 6,
-    title: "Community Outreach & Relief",
+    title: "Sacred Communion Service",
+    category: "Worship Services",
+    image: "/images/gallery/6.jpeg",
+    description: "Remembering Christ's sacrifice and sharing in holy fellowship.",
+  },
+  {
+    id: 7,
+    title: "The Word Expounded",
+    category: "Worship Services",
+    image: "/images/gallery/7.jpeg",
+    description: "Ps. Dilini Wijesekara preaching the life-transforming Word of God.",
+  },
+  {
+    id: 8,
+    title: "Youth & Next Gen Fellowship",
+    category: "Youth & Events",
+    image: "/images/gallery/8.jpeg",
+    description: "Equipping and empowering the younger generation to walk in purpose.",
+  },
+  {
+    id: 9,
+    title: "Spirit-Filled Intercession",
+    category: "Worship Services",
+    image: "/images/gallery/9.jpeg",
+    description: "Lifting our hands in adoration and powerful spiritual warfare.",
+  },
+  {
+    id: 10,
+    title: "Quiet Moments in His Presence",
+    category: "Youth & Events",
+    image: "/images/gallery/10.jpeg",
+    description: "Personal reflection and intimate prayer moments during service.",
+  },
+  {
+    id: 12,
+    title: "Laying on of Hands & Healing Prayer",
     category: "Community Care",
-    image: "/images/hero-1.jpg",
-    description: "Reaching out to vulnerable families across surrounding villages.",
+    image: "/images/gallery/12.jpeg",
+    description: "Ministering physical and emotional healing through fervent prayer.",
   },
 ];
 
@@ -167,14 +202,14 @@ export default function GalleryPage() {
                   className="group relative bg-[#1A1410]/80 rounded-3xl border border-[#D4A359]/30 hover:border-[#FFCC00] shadow-xl hover:shadow-[0_0_25px_rgba(255,204,0,0.2)] overflow-hidden cursor-pointer transition-all duration-500 flex flex-col justify-between backdrop-blur-xl"
                 >
                   {/* Photo Container */}
-                  <div className="relative h-56 w-full overflow-hidden bg-[#241C15]">
+                  <div className="relative h-64 w-full overflow-hidden bg-[#241C15]">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1410] via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1410] via-transparent to-transparent opacity-70" />
                     <div className="absolute inset-0 bg-[#120E0B]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <span className="w-10 h-10 rounded-full bg-[#FFCC00] text-[#120E0B] flex items-center justify-center shadow-[0_0_15px_rgba(255,204,0,0.5)]">
                         <Maximize2 size={18} />
@@ -223,7 +258,7 @@ export default function GalleryPage() {
                     <X size={20} />
                   </button>
 
-                  <div className="relative h-72 sm:h-96 w-full bg-[#241C15]">
+                  <div className="relative h-80 sm:h-[420px] w-full bg-[#241C15]">
                     <Image
                       src={activeImage.image}
                       alt={activeImage.title}
@@ -233,7 +268,7 @@ export default function GalleryPage() {
                   </div>
 
                   <div className="p-6 sm:p-8 space-y-2">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-[#FFCC00] bg-[#FFCC00]/10 border border-[#FFCC00]/20 px-3 py-1 rounded-full">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-[#FFCC00] bg-[#FFCC00]/10 border border-[#FFCC00]/20 px-3.5 py-1.5 rounded-full inline-block">
                       {activeImage.category}
                     </span>
                     <h3 className="text-2xl font-light text-white">{activeImage.title}</h3>

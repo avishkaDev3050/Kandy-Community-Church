@@ -12,7 +12,7 @@ const timelineEvents = [
     year: "1992",
     title: "Beginning of Ministry Journey",
     description:
-      "Ps. & Mrs. Dilini Wijesekara started their full-time pastoral ministry with a passion to reach the unreached and spread the Gospel of Jesus Christ.",
+      "Rev. Rasika and Dilini Jayarathne started their full-time pastoral ministry with a passion to reach the unreached and spread the Gospel of Jesus Christ.",
   },
   {
     year: "2014",
@@ -107,7 +107,7 @@ export default function AboutPage() {
                   Lead Pastors
                 </span>
                 <h2 className="text-2xl sm:text-4xl font-light text-white tracking-wide">
-                  Ps. & Mrs. Dilini Wijesekara
+                  Rev. Rasika and Dilini Jayarathne
                 </h2>
               </div>
 
