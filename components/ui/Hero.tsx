@@ -4,24 +4,27 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const heroSlides = [
   {
     id: 1,
     image: "/images/hero-1.jpg",
+    alt: "Congregation worshipping together at Kandy Community Church in Kandy, Sri Lanka",
     title: "Reach the Unreached",
     subtitle: "Sharing the Gospel of Jesus Christ with love, compassion, and urgency.",
   },
   {
     id: 2,
     image: "/images/hero-2.jpg",
+    alt: "Believers studying the Word of God at Kandy Community Church",
     title: "Raise Disciples",
     subtitle: "Building strong believers through the Word of God, prayer, and fellowship.",
   },
   {
     id: 3,
     image: "/images/hero-3.jpg",
+    alt: "Church members serving the Kandy community in Sri Lanka",
     title: "Release Leaders",
     subtitle: "Equipping believers to transform communities and influence nations.",
   },
@@ -51,9 +54,10 @@ export default function Hero() {
         >
           <Image
             src={heroSlides[currentSlide].image}
-            alt="Kandy Community Church"
+            alt={heroSlides[currentSlide].alt}
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C2D42] via-[#1C2D42]/75 to-[#1C2D42]/40" />
@@ -62,7 +66,10 @@ export default function Hero() {
 
       {/* Hero Content Layer */}
       <div className="relative z-10 h-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center space-y-6 pt-10">
-        
+        <h1 className="sr-only">
+          Kandy Community Church — a Spirit-filled Christian church in Kandy, Sri Lanka
+        </h1>
+
         {/* Church Logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -91,7 +98,7 @@ export default function Hero() {
 
         {/* Dynamic Text Content */}
         <div className="max-w-3xl space-y-3 min-h-[130px] flex flex-col justify-center">
-          <motion.h1
+          <motion.h2
             key={`title-${currentSlide}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +106,7 @@ export default function Hero() {
             className="text-3xl sm:text-6xl font-light text-white tracking-wide"
           >
             {heroSlides[currentSlide].title}
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             key={`sub-${currentSlide}`}

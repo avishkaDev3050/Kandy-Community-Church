@@ -43,17 +43,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/what-we-do" className="hover:text-white transition-colors">
+                <Link href="/ministries" className="hover:text-white transition-colors">
                   What We Do
                 </Link>
               </li>
               <li>
-                <Link href="/community-hub" className="hover:text-white transition-colors">
+                <Link href="/hub" className="hover:text-white transition-colors">
                   Kingdom Community Hub
                 </Link>
               </li>
               <li>
-                <Link href="/support" className="hover:text-white transition-colors">
+                <Link href="/hub#donate" className="hover:text-white transition-colors">
                   Support Us
                 </Link>
               </li>
